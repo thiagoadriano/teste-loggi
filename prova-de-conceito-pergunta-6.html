@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .outer{
+            margin-bottom: 15px
+        }
+        .inner{
+            width: 200px;
+            height: 100px;
+            background: red
+        }
+        .opcao1 {
+            margin-left: auto; 
+            margin-right: auto;
+        }
+        .opcao2 {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .opcao3 {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- opção 1 -->
+    <div class="outer">
+        <div class="inner opcao1">
+            opção 1
+        </div>
+    </div>
+
+    <!-- opção 2 -->
+    <div class="outer">
+        <div class="inner opcao2">
+            opção 2
+        </div>
+    </div>
+
+    <!-- opção 3 -->
+    <div class="outer opcao3">
+        <div class="inner">
+            opção 3
+        </div>
+    </div>
+</body>
+</html>

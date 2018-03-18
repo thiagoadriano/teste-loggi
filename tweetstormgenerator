@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+/**
+ * Criado por Thiago Adriano<thiago.s.adriano@gmail.com>
+ * 
+ */
+let args = process.argv.slice(2),
+    text = args[0],
+    outFile = args[1] === '--outfile',
+    FileManager = require('./Util/FileManager'),
+    TweetCrop = require('./Util/TextCrop');
+
+if (!text) {
+    throw 'Nenhum texto ou arquivo foi informado';
+} 
+
+if (FileManager.hasExtension(text)) {
+    if (!FileManager.isFile(text)) {
+        return;
+    }
+
+    if (FileManager.isTXTFile(text)) {
+        FileManager.readFile(text, TweetCrop.init, outFile);
+    } else {
+        throw 'Informe um arquivo no formato txt';
+    }
+    
+} else if(text !== '--outfile' && text.length > 40) {
+
+    if (outFile) {
+        TweetCrop.init(text, FileManager.writeFile);        
+    } else {
+        TweetCrop.init(text);
+    }
+
+} else {
+    throw "Este texto não contém informações suficientes para ser considerado um tweet."
+}
