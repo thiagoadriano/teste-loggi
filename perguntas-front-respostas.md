@@ -36,6 +36,7 @@ ________________________________________
     top: 50%;
     transform: translate(-50%, -50%);
 ```
+_veja o arquivo prova-de-conceito-pergunta-2.html_
 
 **3. Você já usou algum framework de CSS? Qual? Por que?**
 
@@ -83,6 +84,7 @@ Pode ser que o Gulp e o Grunt possa ser um pós-processador por conta de a alter
       display: flex;
       justify-content: center;
    ```
+   _veja o arquivo prova-de-conceito-pergunta-6.html_
 
 
 **7. Como você mantem os seletores (classes, ids, etc) de uma base de código que evolui com o tempo? Como faz para remover o que não está sendo usado (e pior, como saber o que está sendo usado)?**
