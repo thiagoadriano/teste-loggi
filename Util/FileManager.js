@@ -2,7 +2,26 @@
  * Criado por Thiago Adriano<thiago.s.adriano@gmail.com>
  * 
  */
-const fs = require('fs');
+const fs = require('fs'),
+      DIR_NAME = 'out';
+function _createDirOut(callback) {
+    fs.mkdir(DIR_NAME, (error) => {
+        if(error) {
+            throw error
+        }
+        callback();
+    })
+}
+
+function _dirOutExists(callback) {
+    fs.exists(DIR_NAME, (isExists) => {
+        if(isExists) {
+            callback();
+        } else {
+            _createDirOut(callback)
+        }
+    });
+}
 
 function hasExtension(file) {
     if (file.length > 0 && file.length < 160) {
@@ -58,11 +77,13 @@ function writeFile(text) {
         formateTimeStamp = `${dateFormated} ${hourFormated}`,
         localFile = `out/tweets-${formateTimeStamp}.txt`;
 
-    fs.writeFile(localFile, text, {enconding: 'latin1'}, (err) => {
-        if (err) { 
-            throw err;
-        }
-        console.log(`File is Save in ${localFile}!`);
+    _dirOutExists(() => {
+        fs.writeFile(localFile, text, {enconding: 'latin1'}, (err) => {
+            if (err) {
+                throw err;
+            }
+            console.log(`File is Save in ${localFile}!`);
+        })
     });
 }
 
